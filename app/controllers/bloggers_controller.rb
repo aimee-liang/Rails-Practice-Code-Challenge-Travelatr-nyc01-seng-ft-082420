@@ -13,6 +13,7 @@ class BloggersController < ApplicationController
 
     def new
         @blogger = Blogger.new
+        @blogger.save
     end
 
     def create
@@ -21,7 +22,7 @@ class BloggersController < ApplicationController
             redirect_to blogger_path(blogger)
         else
             flash[:my_errors] = blogger.errors.full_messages
-        redirect_to new_blogger_path
+            redirect_to new_blogger_path
         end
     end
 

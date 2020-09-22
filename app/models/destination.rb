@@ -2,6 +2,10 @@ class Destination < ApplicationRecord
     has_many :posts
     has_many :bloggers, through: :posts
 
+    def recent_posts
+        self.posts.sort{|post_a, post_b| post_a.updated_at <=> post_b.updated_at}
+    end
+
     def total_likes
         self.posts.sum{ |post| post.likes}
     end

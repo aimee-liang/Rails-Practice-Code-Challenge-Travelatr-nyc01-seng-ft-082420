@@ -13,10 +13,12 @@ class DestinationsController < ApplicationController
 
     def new
         @destination = Destination.new
+        @destination.save
     end
 
     def create
         destination = Destination.create(destination_params)
+        
         if destination.valid?
             redirect_to destination_path(destination)
         else
